@@ -1,5 +1,6 @@
 package com.ncc.backend.fleet.entity;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,6 +28,10 @@ public class Vehicle {
     @Column(nullable = false, unique = true)
     private String licensePlate; // Targa
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private VehicleCategory category;
+
     @Column(nullable = false)
     private Integer passengerCapacity; // Capienza passeggeri
 
@@ -37,6 +42,29 @@ public class Vehicle {
     @Column(nullable = false)
     private VehicleStatus status;
 
+    // Enum Categorie NCC
+    public enum VehicleCategory {
+        AUTOVETTURA("Autovettura"),
+        SUV_CROSSOVER("SUV / crossover"),
+        MONOVOLUME_MINIVAN("Monovolume / minivan"),
+        MINIBUS("Minibus"),
+        LUXURY_EXECUTIVE("Veicoli di lusso / executive"),
+        PMR_ACCESSIBLE("Veicoli attrezzati PMR"),
+        ELECTRIC_HYBRID("Veicoli elettrici o ibridi");
+
+        private final String label;
+
+        VehicleCategory(String label) {
+            this.label = label;
+        }
+
+        @JsonValue
+        public String getLabel() {
+            return label;
+        }
+    }
+
+    // Enum Stato Veicolo
     public enum VehicleStatus {
         AVAILABLE,
         IN_MAINTENANCE,

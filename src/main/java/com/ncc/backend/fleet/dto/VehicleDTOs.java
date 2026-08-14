@@ -1,5 +1,6 @@
 package com.ncc.backend.fleet.dto;
 
+import com.ncc.backend.fleet.entity.Vehicle.VehicleCategory;
 import com.ncc.backend.fleet.entity.Vehicle.VehicleStatus;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -13,6 +14,7 @@ public class VehicleDTOs {
             @NotBlank(message = "La marca è obbligatoria") String brand,
             @NotBlank(message = "Il modello è obbligatorio") String model,
             @NotBlank(message = "La targa è obbligatoria") String licensePlate,
+            @NotNull(message = "La categoria è obbligatoria") VehicleCategory category,
             @NotNull @Min(1) Integer passengerCapacity,
             @NotNull @Min(0) Integer luggageCapacity
     ) {}
@@ -22,6 +24,7 @@ public class VehicleDTOs {
             String brand,
             String model,
             String licensePlate,
+            VehicleCategory category,
             Integer passengerCapacity,
             Integer luggageCapacity,
             VehicleStatus status

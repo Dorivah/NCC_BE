@@ -26,6 +26,7 @@ public class VehicleService {
                 .brand(request.brand())
                 .model(request.model())
                 .licensePlate(request.licensePlate().toUpperCase())
+                .category(request.category())
                 .passengerCapacity(request.passengerCapacity())
                 .luggageCapacity(request.luggageCapacity())
                 .status(Vehicle.VehicleStatus.AVAILABLE)
@@ -55,6 +56,7 @@ public class VehicleService {
                 vehicle.getBrand(),
                 vehicle.getModel(),
                 vehicle.getLicensePlate(),
+                vehicle.getCategory(),
                 vehicle.getPassengerCapacity(),
                 vehicle.getLuggageCapacity(),
                 vehicle.getStatus()
